@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html { overflow-y: scroll; }
+
+
 body {
+  width: 100%;
+  position: absolute; 
+  background-color: #0A0909;
+  // color: #EBA338;
+  color: 
+  #FBBF24;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
