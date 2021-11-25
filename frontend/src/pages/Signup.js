@@ -1,6 +1,7 @@
 import NavBar from "../components/Navbar";
 import IntroImage  from "../components/introimage";
 import { Link } from "react-router-dom";
+import {registerWithEmailAndPassword} from '../components/utils/firebase';
 function Signup(){
 
     return (
@@ -18,9 +19,9 @@ function Signup(){
   <form >
     <div class="mb-4">
       <label class="block  text-sm font-bold mb-2" for="username">
-        Username
+        Email Address
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email Address"/>
     </div>
     <div class="mb-6">
       <label class="block  text-sm font-bold mb-2" for="password">
@@ -34,10 +35,8 @@ function Signup(){
 </div>
             <div className="flex justify-between">
           
-            <a href="#about">
-            <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" >signup</button>
-                </a>
-
+            <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" onClick={() => registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value)}>signup</button>
+           
             <br/>
             
              </div>

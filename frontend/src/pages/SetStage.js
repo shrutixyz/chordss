@@ -9,7 +9,7 @@ function SetStage(){
 <p className="text-4xl ">Let us know some deets!</p> <br/>
 <div className="mb-6 w-80 md:w-96 mt-2" >
       
-      <input className="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline float-left" id="username" type="text" placeholder="name of jam session"/>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline float-left" id="seshname" type="text" placeholder="name of jam session"/>
     </div>
     <p className="text-lg mt-16">select instruments you'll need:-</p> <br/>
     <div class="block">
