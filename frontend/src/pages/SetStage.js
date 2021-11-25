@@ -14,7 +14,7 @@ function SetStage(){
     <p className="text-lg mt-16">select instruments you'll need:-</p> <br/>
     <div class="block">
 
-  <div class="mt-0 flex justify-between" >
+  <div class="mt-0  flex flex-col md:flex-row  justify-between" >
     <div>
       <label class="inline-flex items-center border-yellow-500 border-2 px-6 py-1 rounded-lg">
         <input type="checkbox" class="form-checkbox" />

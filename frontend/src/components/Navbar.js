@@ -1,7 +1,27 @@
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../index.scss';
+import firebase  from '@firebase/app-compat';
 
 function NavBar(){
+  
+  // var user = firebase.auth().currentUser;
+  // var userstate = "login";
+  // if(user==null){
+  //   userstate = "login";
+  // }
+  // else{
+  //   userstate = "logout"
+  // }
+  var show = "login"
+  // async function hehe(){
+  //  var lol = await firebase.auth().currentUser;
+  //   if(lol!=null){
+  //     show = lol.email;
+  //   }
+  // }
+ 
+  // hehe()
     return (
         <div class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -24,10 +44,16 @@ function NavBar(){
       
     </div>
     <div>
+      
+    <Link to="/login">
+   <p  class="inline-block text-sm px-4 mr-4 py-2 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">{show}</p>
+   
+   </Link>
    <Link to="/newjam">
    <p  class="inline-block text-sm px-4 py-2 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Join/Create quick session</p>
    
    </Link>
+  
     </div>
   </div>
 </div>

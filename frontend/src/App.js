@@ -1,5 +1,5 @@
 import Home from '../src/pages/Home';
-import React from "react";
+import React, { useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,8 +11,15 @@ import Signup from './pages/Signup';
 import NewJam from './pages/NewJam';
 import Jam from './pages/Jam';
 import SetStage from './pages/SetStage';
+import Instruments from './pages/instruments';
+
+
 
 function App() {
+  useEffect(() => {
+    document.title = "chords";  
+  }, []);
+
   return (
     <Router>
       <div>
@@ -24,6 +31,7 @@ function App() {
         <Route path='/newjam' element={<NewJam/>}/>
         <Route path='/jam' element={<Jam/>}/>
         <Route path='/setstage' element={<SetStage/>}/>
+        <Route path="/instruments/" element={<Instruments/>} />
         </Routes>
       </div>
     </Router>
