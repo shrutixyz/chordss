@@ -12,6 +12,7 @@ import NewJam from './pages/NewJam';
 import Jam from './pages/Jam';
 import SetStage from './pages/SetStage';
 import Instruments from './pages/instruments';
+import Meeting from './pages/Meeting';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/jam' element={<Jam/>}/>
         <Route path='/setstage' element={<SetStage/>}/>
         <Route path="/instruments/" element={<Instruments/>} />
+        <Route path="/meeting" element={<Meeting/>}/>
         </Routes>
       </div>
     </Router>
