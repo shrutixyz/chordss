@@ -3,13 +3,13 @@ import IntroImage  from "../components/introimage";
 import { Link } from "react-router-dom";
 import React, {useState, setInput} from "react";
 import {signInWithEmailAndPassword, registerWithEmailAndPassword, logout} from '../components/utils/firebase';
-function Login(){
+function Login({user}){
   // const [username, setUser] = useState('');
   // const [password, setPass] = useState('');
  
     return (
         <>
-        <NavBar/>
+        <NavBar user={user}/>
         <div className="flex justify-around flex-col md:flex-row items-center mt-10">
         <div className="flex-initial "><IntroImage/>
         </div>

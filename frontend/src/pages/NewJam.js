@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Logo from '../images/drummer.svg';
-
-function NewJam(){
+import {useEffect} from 'react'
+import {auth} from '../components/utils/firebase';
+function NewJam({user}){
+  const history = useNavigate()
+    console.log(user)
+    useEffect(() => {
+      auth.onAuthStateChanged((user) => {
+          if(!user) {history('/'); alert("please log in")}
+          
+      })
+  },[])
     return (
         <>
+
+        <NavBar user={user}/>
      <form >
     <div className="mb-6 w-80 md:w-96 ml-10 mt-20" >
       

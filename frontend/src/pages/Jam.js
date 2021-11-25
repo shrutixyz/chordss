@@ -2,10 +2,12 @@ import './jam.scss';
 import {BiShareAlt} from 'react-icons/bi'
 import {MdCallEnd} from 'react-icons/md'
 import SetStage from './SetStage';
+import NavBar from '../components/Navbar';
 
 
-function Jam(){
+function Jam({user}){
 return <>
+<NavBar user={user} />
 <div className="flex justify-between m-4" >
     <p className="text-2xl">{document.getElementById('seshname').value}</p>
     <BiShareAlt className="float-right h-8 w-8"/>

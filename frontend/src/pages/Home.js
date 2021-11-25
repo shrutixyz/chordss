@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import IntroImage from "../components/introimage";
 import NavBar from "../components/Navbar";
 
-function Home(){
+function Home({user}){
 
     return (
         <>
-        <NavBar/>
+        <NavBar user={user}/>
         <div className="flex justify-around flex-col md:flex-row items-center mt-10">
         <div className="flex-initial "><IntroImage/>
         </div>

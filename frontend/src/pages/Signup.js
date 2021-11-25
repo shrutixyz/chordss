@@ -2,11 +2,11 @@ import NavBar from "../components/Navbar";
 import IntroImage  from "../components/introimage";
 import { Link } from "react-router-dom";
 import {registerWithEmailAndPassword} from '../components/utils/firebase';
-function Signup(){
+function Signup({user}){
 
     return (
         <>
-        <NavBar/>
+        <NavBar user={user} />
         <div className="flex justify-around flex-col md:flex-row items-center mt-10">
         <div className="flex-initial "><IntroImage/>
         </div>

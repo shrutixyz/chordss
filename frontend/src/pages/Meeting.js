@@ -2,7 +2,7 @@ import {Helmet} from "react-helmet";
 import VoxeetSDK from "@voxeet/voxeet-web-sdk"
 
 
-function Meeting (){
+function Meeting ({user}){
 
     const avengersNames = [
         "frooti",

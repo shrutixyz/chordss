@@ -1,10 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import NavBar from '../components/Navbar';
 import Logo from '../images/guitarist.svg';
-
-function SetStage(){
+import {useEffect} from 'react'
+import {auth} from '../components/utils/firebase';
+function SetStage({user}){
+  const history = useNavigate()
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+        if(!user) {history('/'); alert("please log in")}
+        
+    })
+},[])
 
     return (
         <>
+        <NavBar user={user} />
         <div className="float-left md:float-right mr-32 mt-28 ml-4">
 <p className="text-4xl ">Let us know some deets!</p> <br/>
 <div className="mb-6 w-80 md:w-96 mt-2" >
