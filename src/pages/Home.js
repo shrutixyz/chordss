@@ -34,9 +34,9 @@ function Home({user}){
               <br/><br/>
               <center><p className="underline text-3xl" id="about"> About</p>
               <br/>
-              <p className="px-3 md:px-40 text-justify text-lg"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Cursus turpis massa tincidunt dui ut ornare lectus sit amet. Dictum at tempor commodo ullamcorper. Est lorem ipsum dolor sit amet consectetur. Neque laoreet suspendisse interdum consectetur libero. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Curabitur gravida arcu ac tortor. Tellus orci ac auctor augue mauris augue neque. Turpis egestas sed tempus urna et.
-
-Eget est lorem ipsum dolor sit amet. Purus ut faucibus pulvinar elementum integer. Fermentum odio eu feugiat pretium nibh. Ac auctor augue mauris augue neque gravida in fermentum. Arcu risus quis varius quam quisque id. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus. Leo vel fringilla est ullamcorper eget nulla facilisi etiam dignissim. Dictumst quisque sagittis purus sit amet. Faucibus nisl tincidunt eget nullam. Ac feugiat sed lectus vestibulum mattis ullamcorper. Ut tortor pretium viverra suspendisse potenti nullam ac. Faucibus nisl tincidunt eget nullam non nisi est sit.</p>
+              <p className="px-3 md:px-40 text-justify text-lg">Welcome to chordz, the only thing you'll ever need to seemlessly attend and organise hybrid music concerts or maybe just casual jam sessions. The usage is simple and straightforward. Basically you would need to login/create an account on chordz. Thereafter, organisers can create a new jam room, they'll fill in the requirements of what instruments they'll need virtually, and then get a jam room created, now they can easily share the details of this room using in-app share feature, and then any common user who'd like to attend the music session can just click on the link and they'll be redirected to that specific jam session. The main aim to create it was to integrate the hybrid environment correctly and letting people have the sense of place, instead of a boring screen show.
+<br/><br/>
+And we're focussed to make the user experience even better over time. Also, thanks to dolby for their amazing APIs.</p>
            <br/><br/>
            <p >made with 💖 by shruti and aakash</p>
               </center>

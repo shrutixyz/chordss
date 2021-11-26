@@ -13,11 +13,15 @@ function Signup({user}){
         <div className="flex-initial h-30 w-50 bg-transparent">
             <h1 className="text-5xl">Signup</h1>
             <br/>
-            <p className="text-2xl">hey, create an account on chords!</p>
+            <p className="text-2xl">hey, create an account on chordz!</p>
             <br/>
             <div class="w-full max-w-xs">
   <form >
     <div class="mb-4">
+    <label class="block  text-sm font-bold mb-2" for="username">
+        Name
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 mb-3 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name"/>
       <label class="block  text-sm font-bold mb-2" for="username">
         Email Address
       </label>

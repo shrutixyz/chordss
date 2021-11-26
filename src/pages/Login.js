@@ -16,7 +16,7 @@ function Login({user}){
         <div className="flex-initial h-30 w-50 bg-transparent">
             <h1 className="text-5xl">Login</h1>
             <br/>
-            <p className="text-2xl">hey, welcome back on chords yay!</p>
+            <p className="text-2xl">hey, welcome back on chordz yay!</p>
             <br/>
             <div class="w-full max-w-xs">
   <form >
