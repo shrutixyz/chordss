@@ -15,6 +15,7 @@ import Instruments from './pages/instruments';
 import Meeting from './pages/Meeting';
 
 import {auth} from './components/utils/firebase';
+import Trycry from './pages/trycry';
 
 function App() {
   useEffect(() => {
@@ -58,6 +59,9 @@ function App() {
         <Route path='/setstage' element={<SetStage user={user}/>} />
         <Route path="/instruments/" element={<Instruments user={user}/>} />
         <Route path="/meeting" element={<Meeting user={user}/>} />
+        <Route path="/trycry" element={<Trycry/>}>
+         
+        </Route>
         </Routes>
       </div>
     </Router>
