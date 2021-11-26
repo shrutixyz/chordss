@@ -22,7 +22,7 @@ function NavBar({user}){
         <div class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
   <img src={Logo} className="w-12"/>
-    <span class="font-semibold text-xl tracking-tight">chords</span>
+    <span class="font-semibold text-xl tracking-tight">chordz</span>
   </div>
   <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">

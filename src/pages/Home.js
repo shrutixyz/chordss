@@ -11,7 +11,7 @@ function Home({user}){
         <div className="flex-initial "><IntroImage/>
         </div>
         <div className="flex-initial h-30 w-50 bg-transparent">
-            <h1 className="text-8xl">CHORDS</h1>
+            <h1 className="text-8xl">CHORDZ</h1>
             <br/>
             <p className="text-2xl">organise and attend online music
             <br/>jam sessions,

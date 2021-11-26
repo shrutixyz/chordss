@@ -19,7 +19,7 @@ import Trycry from './pages/trycry';
 
 function App() {
   useEffect(() => {
-    document.title = "chords";  
+    document.title = "chordz";  
   }, []);
 
   const [user, setuser] = useState(null)
