@@ -1,8 +1,19 @@
 import NavBar from "../components/Navbar";
 import IntroImage  from "../components/introimage";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { storage } from "../components/utils/firebase";
 import {registerWithEmailAndPassword} from '../components/utils/firebase';
 function Signup({user}){
+  const [image , setImage] = useState('');
+  const upload = ()=>{
+    if(image == null)
+      return;
+    storage.ref(`/pfp/${document.getElementById('username').value}.png`).put(image)
+    .on("state_changed" , console.log("success") , alert);
+
+    registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value)
+  }
 
     return (
         <>
@@ -18,10 +29,10 @@ function Signup({user}){
             <div class="w-full max-w-xs">
   <form >
     <div class="mb-4">
-    <label class="block  text-sm font-bold mb-2" for="username">
-        Name
+    <label class="block  text-sm font-bold mb-2" for="avatar">
+        Select Avatar
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 mb-3 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name"/>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 mb-3 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="photo" type="file"  accept="image/*"  placeholder="select" onChange={(e)=>{setImage(e.target.files[0])}}/>
       <label class="block  text-sm font-bold mb-2" for="username">
         Email Address
       </label>
@@ -39,8 +50,8 @@ function Signup({user}){
 </div>
             <div className="flex justify-between">
           
-            <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" onClick={() => registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value)}>signup</button>
-           
+            <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" onClick={upload}>signup</button>
+            {/* () => registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value, image) */}
             <br/>
             
              </div>

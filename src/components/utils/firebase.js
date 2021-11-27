@@ -5,6 +5,7 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import "firebase/compat/firestore"
+import "firebase/compat/storage"
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -31,6 +32,8 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 const db = app.firestore();
+var storage = firebase.storage();
+// export default storage;
 
 // export default firebase;
 const signInWithEmailAndPassword = async (email, password) => {
@@ -55,13 +58,16 @@ window.location.href='/newjam'
 window.location.href='/newjam'
         }
       });
-      // const user = res.user;
-      // await db.collection("users").add({
-      //   uid: user.uid,
-      //   name,
-      //   authProvider: "local",
-      //   email,
-      // });
+      // const user = res.currentUser;
+      await db.collection("users").doc(email).set({
+        email: email,
+      }).then((_)=>{
+        console.log("ho gaya")
+      });
+    //   if(image == null)
+    //   return;
+    // storage.ref(`/images/${image.name}`).put(image)
+    // .on("state_changed" , alert("success") , alert);
     } catch (err) {
       console.error(err);
       alert(err.message);
@@ -79,4 +85,7 @@ window.location.href='/newjam'
     signInWithEmailAndPassword,
     registerWithEmailAndPassword,
     logout,
+    storage
   };
+
+  
