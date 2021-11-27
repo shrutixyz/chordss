@@ -51,6 +51,37 @@ const Trycry = ({user}) => {
             })
             .catch((err) => console.error(err));
     };
+
+    
+    function joinasattendee2() {
+        
+
+        /*
+        1. Create a conference room with an alias
+        2. Join the conference with its id
+        */
+        VoxeetSDK.conference.create({ alias: conferenceAlias })
+            .then((conference) => VoxeetSDK.conference.join(conference, {constraints: {audio: false, video: false}}))
+            .then(() => {
+                console.log('join')
+            })
+            .catch((err) => console.error(err));
+    };
+
+    function joinasattendee() {
+        
+
+        /*
+        1. Create a conference room with an alias
+        2. Join the conference with its id
+        */
+        VoxeetSDK.conference.create({ alias: conferenceAlias })
+            .then((conference) => VoxeetSDK.conference.listen(conference))
+            .then(() => {
+                console.log('join')
+            })
+            .catch((err) => console.error(err));
+    };
     
     const addParticipantNode = participant => {
         let temp = participantlist
@@ -68,6 +99,7 @@ const Trycry = ({user}) => {
 
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
         console.log("stream added")
+        console.log(participant)
         addParticipantNode(participant);
     });
 
@@ -92,12 +124,19 @@ const Trycry = ({user}) => {
     }
 
     
+
+    
     return (
 
         <div>
            <h1 id="name-message">Logging in...</h1>
            <input type="text" value={conferenceAlias} onChange={e => setconferenceAlias(e.target.value)}/>
            <button onClick={e => joinroom()}>join</button>
+           <br/>
+           <button onClick={e => joinasattendee()}>join as attendee</button>
+           <br/>
+           <button onClick={e => joinasattendee2()}>join as attendee pt 2</button>
+           <br/>
            <button id="leave-btn" onClick={e => leaveroom()}>Leave</button>
            <div id="participants">
                 <h3>Participants</h3>
