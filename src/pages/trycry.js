@@ -124,7 +124,7 @@ const Trycry = ({user}) => {
     }
 
     function muteparticipant(){
-        mute(VoxeetSDK.session.participant, !isMute)
+        VoxeetSDK.conference.mute(VoxeetSDK.session.participant, !isMute)
         setisMute(!isMute)
     }
 
