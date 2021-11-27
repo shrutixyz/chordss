@@ -13,7 +13,7 @@ import Jam from './pages/Jam';
 import SetStage from './pages/SetStage';
 import Instruments from './pages/instruments';
 import Meeting from './pages/Meeting';
-
+import ScreenShare from './pages/ScreenShare';
 import {auth} from './components/utils/firebase';
 import Trycry from './pages/trycry';
 
@@ -60,6 +60,7 @@ function App() {
         <Route path='/setstage' element={<SetStage user={user}/>} />
         <Route path="/instruments" element={<Instruments user={user}/>} />
         <Route path="/trycry" element={<Trycry user={user}/>}/>
+        <Route path="/screenshare" element={<ScreenShare user={user}/>}/>
          
       
         </Routes>
