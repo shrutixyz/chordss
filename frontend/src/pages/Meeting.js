@@ -15,6 +15,7 @@ function Meeting ({user}){
       let randomName =
         avengersNames[Math.floor(Math.random() * avengersNames.length)];
         const initUI = () => {
+            console.log(user)
             const nameMessage = document.getElementById("name-message");
             nameMessage.innerHTML = `You are logged in as ${randomName}`;
             const joinButton = document.getElementById('join-btn')

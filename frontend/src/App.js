@@ -56,12 +56,12 @@ function App() {
         <Route path='/signup' element={<Signup user={user}/>} />
         <Route path='/newjam' element={<NewJam user={user}/>} />
         <Route path='/jam' element={<Jam user={user}/>} />
-        <Route path='/setstage' element={<SetStage user={user}/>} />
-        <Route path="/instruments/" element={<Instruments user={user}/>} />
         <Route path="/meeting" element={<Meeting user={user}/>} />
-        <Route path="/trycry" element={<Trycry/>}>
+        <Route path='/setstage' element={<SetStage user={user}/>} />
+        <Route path="/instruments" element={<Instruments user={user}/>} />
+        <Route path="/trycry" element={<Trycry user={user}/>}/>
          
-        </Route>
+      
         </Routes>
       </div>
     </Router>
