@@ -8,7 +8,7 @@ const Trycry = ({user}) => {
 
     const [conferenceAlias, setconferenceAlias] = useState("")
     const [participantlist, setparticipantlist] = useState([])
-
+    const [isMute, setisMute] = useState(false)
   
 
     const initUI = () => {
@@ -123,6 +123,11 @@ const Trycry = ({user}) => {
         .catch((err) => console.error(err));
     }
 
+    function muteparticipant(){
+        mute(VoxeetSDK.session.participant, !isMute)
+        setisMute(!isMute)
+    }
+
     
 
     
@@ -136,6 +141,8 @@ const Trycry = ({user}) => {
            <button onClick={e => joinasattendee()}>join as attendee</button>
            <br/>
            <button onClick={e => joinasattendee2()}>join as attendee pt 2</button>
+           <br/>
+           <button onClick={e => muteparticipant()}>mute</button>
            <br/>
            <button id="leave-btn" onClick={e => leaveroom()}>Leave</button>
            <div id="participants">
