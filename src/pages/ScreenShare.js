@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import VoxeetSDK from "@voxeet/voxeet-web-sdk"
 
 const ScreenShare = ({user}) => {
-
+   
 
 
     const [conferenceAlias, setconferenceAlias] = useState("")
@@ -55,6 +55,8 @@ const ScreenShare = ({user}) => {
        
         };
 
+        
+
     useEffect(() => {
         if(user){
             
@@ -74,7 +76,28 @@ const ScreenShare = ({user}) => {
         }
         main();
     }, user)
-
+function lmao(){
+    // var stream;
+    try {
+    
+    var stream = navigator.mediaDevices.getDisplayMedia( {video: true, audio: true }) 
+    const audioSource= stream.getAudioTracks ()[0];
+    
+    const videoSource= stream.getVideoTracks ()[0];
+    
+    if (audioSource && videoSource ) {
+    
+    const props = { audioSource, videoSource };
+    
+    }
+    
+    } catch (e) {
+    
+    console.log('Error getting Stream', e);
+    
+    }
+    VoxeetSDK.videoPresentation.start(stream.getVideoTracks ()[0])
+}
 
     function joinroom() {
         
@@ -106,6 +129,8 @@ const ScreenShare = ({user}) => {
     useEffect(() => {
         console.log(participantlist)
     }, [participantlist])
+
+    VoxeetSDK.videoPresentation.on("started", (e) => {});
 
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
         if (stream.type === 'ScreenShare') return addScreenShareNode(stream);
@@ -156,7 +181,7 @@ const ScreenShare = ({user}) => {
   
   <button id="start-screenshare-btn" disabled>Start screen share</button>
   <button id="stop-screenshare-btn" disabled>Stop screen share</button>
-  
+  <button onclick={lmao}>share videooooooooo</button>
 </div>
 
 <div id="video-container"></div>
