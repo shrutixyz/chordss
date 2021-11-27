@@ -99,6 +99,7 @@ const Trycry = ({user}) => {
 
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
         console.log("stream added")
+        console.log(participant)
         addParticipantNode(participant);
     });
 
