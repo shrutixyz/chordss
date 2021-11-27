@@ -17,6 +17,9 @@ import ScreenShare from './pages/ScreenShare';
 import {auth} from './components/utils/firebase';
 import Trycry from './pages/trycry';
 import Baamzi from './pages/baamzi';
+import LolDrum from './components/lol_drum'
+import LolPiano from './components/lolpiano'
+
 
 function App() {
   useEffect(() => {
@@ -63,7 +66,8 @@ function App() {
         <Route path="/trycry" element={<Trycry user={user}/>}/>
         <Route path="/screenshare" element={<ScreenShare user={user}/>}/>
         <Route path="/baamzi" element={<Baamzi user={user}/>}/>
-      
+      <Route path="/loldrum" element = {<LolDrum user={user}/>}/>
+      <Route path="/lolpiano" element = {<LolPiano user={user}/>}/>
         </Routes>
       </div>
     </Router>
