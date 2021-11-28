@@ -613,31 +613,31 @@ return (
   </div>
 
   <div class="keyboard">
-    <div data-note="c4" data-key="81" class="key white oct">q</div>
-    <div data-note="db4" data-key="50" class="key black black1 oct">2</div>
-    <div data-note="d4" data-key="87" class="key white oct">w</div>
-    <div data-note="eb4" data-key="51" class="key black black2 oct">3</div>
-    <div data-note="e4" data-key="69" class="key white oct">e</div>
-    <div data-note="f4" data-key="82" class="key white oct">r</div>
-    <div data-note="gb4" data-key="53" class="key black black3 oct">5</div>
-    <div data-note="g4" data-key="84" class="key white oct">t</div>
-    <div data-note="ab4" data-key="54" class="key black black4 oct">6</div>
-    <div data-note="a4" data-key="89" class="key white oct">y</div>
-    <div data-note="bb4" data-key="55" class="key black black5 oct">7</div>
-    <div data-note="b4" data-key="85" class="key white oct">u</div>
-    <div data-note="c5" data-key="88" class="key white">x</div>
-    <div data-note="db5" data-key="68" class="key black black6">d</div>
-    <div data-note="d5" data-key="67" class="key white">c</div>
-    <div data-note="eb5" data-key="70" class="key black black7">f</div>
-    <div data-note="e5" data-key="86" class="key white">v</div>
-    <div data-note="f5" data-key="66" class="key white">b</div>
-    <div data-note="gb5" data-key="72" class="key black black8">h</div>
-    <div data-note="g5" data-key="78" class="key white">n</div>
-    <div data-note="ab5" data-key="74" class="key black black9">j</div>
-    <div data-note="a5" data-key="77" class="key white">m</div>
-    <div data-note="bb5" data-key="75" class="key black black10">k</div>
-    <div data-note="b5" data-key="188" class="key white">,</div>
-    <div data-note="c6" data-key="190" class="key white">.</div>
+    <div data-note="c4" data-key="81" class="key white oct"><p className="text-black">q</p></div>
+    <div data-note="db4" data-key="50" class="key black black1 oct"><p className="text-white">2</p></div>
+    <div data-note="d4" data-key="87" class="key white oct"><p className="text-black">w</p></div>
+    <div data-note="eb4" data-key="51" class="key black black2 oct"><p className="text-white">3</p></div>
+    <div data-note="e4" data-key="69" class="key white oct"><p className="text-black">e</p></div>
+    <div data-note="f4" data-key="82" class="key white oct"><p className="text-black">r</p></div>
+    <div data-note="gb4" data-key="53" class="key black black3 oct"><p className="text-white">5</p></div>
+    <div data-note="g4" data-key="84" class="key white oct"><p className="text-black">t</p></div>
+    <div data-note="ab4" data-key="54" class="key black black4 oct"><p className="text-white">6</p></div>
+    <div data-note="a4" data-key="89" class="key white oct"><p className="text-black">y</p></div>
+    <div data-note="bb4" data-key="55" class="key black black5 oct"><p className="text-white">7</p></div>
+    <div data-note="b4" data-key="85" class="key white oct"><p className="text-black">u</p></div>
+    <div data-note="c5" data-key="88" class="key white"><p className="text-black">x</p></div>
+    <div data-note="db5" data-key="68" class="key black black6"><p className="text-white">d</p></div>
+    <div data-note="d5" data-key="67" class="key white"><p className="text-black">c</p></div>
+    <div data-note="eb5" data-key="70" class="key black black7"><p className="text-white">f</p></div>
+    <div data-note="e5" data-key="86" class="key white"><p className="text-black">v</p></div>
+    <div data-note="f5" data-key="66" class="key white"><p className="text-black">b</p></div>
+    <div data-note="gb5" data-key="72" class="key black black8"><p className="text-white">h</p></div>
+    <div data-note="g5" data-key="78" class="key white"><p className="text-black">n</p></div>
+    <div data-note="ab5" data-key="74" class="key black black9"><p className="text-white">j</p></div>
+    <div data-note="a5" data-key="77" class="key white"><p className="text-black">m</p></div>
+    <div data-note="bb5" data-key="75" class="key black black10"><p className="text-white">k</p></div>
+    <div data-note="b5" data-key="188" class="key white"><p className="text-black">,</p></div>
+    <div data-note="c6" data-key="190" class="key white"><p className="text-black">.</p></div>
   </div>
 
 </div>
