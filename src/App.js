@@ -21,6 +21,7 @@ import ConferenceJam from './pages/Conference';
 import LolDrum from './components/lol_drum'
 import LolPiano from './components/lolpiano'
 import Left from './pages/Left';
+import Curtain from './components/curtain'
 
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
       <Route path="/loldrum" element = {<LolDrum user={user}/>}/>
       <Route path="/lolpiano" element = {<LolPiano user={user}/>}/>
       <Route path="/left"  element={<Left/>} />
+      <Route path="/curtain"  element={<Curtain/>} />
         
       
         </Routes>

@@ -15,11 +15,12 @@ const Baamzi = ({user}) => {
         const screenShareContainer = document.getElementById("screenshare-container");
         let screenShareNode = document.getElementById("screenshare");
       
-        if (screenShareNode) {
-          return alert("There is already a participant sharing their screen!");
-        }
+        // if (screenShareNode) {
+        //   return alert("There is already a participant sharing their screen!");
+        // }
         screenShareNode = document.createElement("video");
         screenShareNode.autoplay = "autoplay";
+        screenShareNode.style.display = "none" // although the screen is shared but it wont be visible yay
         navigator.attachMediaStream(screenShareNode, stream);
       
         screenShareContainer.appendChild(screenShareNode);
@@ -184,7 +185,7 @@ const Baamzi = ({user}) => {
   
 </div>
 
-<div id="video-container"></div>
+<div id="video-container" className="hidden"></div>
 <div id="screenshare-container"></div>
         </div>
     )

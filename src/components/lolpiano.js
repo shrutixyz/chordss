@@ -13,7 +13,7 @@ function LolPiano(){
  Increase tempo before you play a demo to play the song faster
 */
 
-document.addEventListener("DOMContentLoaded", function(){
+// document.addEventListener("load", function(){
  
     //Frequencies list from http://www.phy.mtu.edu     
     const frequencies = [
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const volumeInput = document.querySelector('.volume');
     const blackKey = Array.from(document.querySelectorAll('.black'));
     const whiteKey = Array.from(document.querySelectorAll('.white'));
-    const help = document.querySelector('.help');
+    // const help = document.querySelector('.help');
     const key = Array.from(document.querySelectorAll('.key'));
     let volume = 0.5;
     //Lower value = faster speed
@@ -536,33 +536,10 @@ document.addEventListener("DOMContentLoaded", function(){
           key.classList.remove('played');
         }, length || 300);
     }
-    
-    //keyboard information toggle
-    let helpOn = true;
-    function helpToggle() {
-      if (helpOn) {
-        blackKey.forEach((key)=>{
-          key.style.color = 'rgba(0,0,0,0)';
-        });
-        whiteKey.forEach((key)=>{
-          key.style.color = 'rgba(255,255,255,0)';
-        });    
-        help.classList.remove('on');
-        helpOn = !helpOn;
-      } else {
-        blackKey.forEach((key)=>{
-          key.style.color = 'rgba(255,255,255,1)';
-        })     
-        whiteKey.forEach((key)=>{
-          key.style.color = 'rgba(0,0,0,1)';
-        })    
-        help.classList.add('on');
-        helpOn = !helpOn;
-      }
-    }
+  
     
     //event listeners
-    help.addEventListener('click', helpToggle);
+    // help.addEventListener('click', helpToggle);
     demoButtons.forEach((key)=>{
       key.addEventListener('click', demoHandler);
     })
@@ -574,8 +551,8 @@ document.addEventListener("DOMContentLoaded", function(){
     // volumeInput.addEventListener('change', updateVolume);
     
     //Hide keyboard help letters on load
-    helpToggle();
-  });
+    // helpToggle();
+  // });
 return (
     <>
     <div class="wrap">

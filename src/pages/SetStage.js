@@ -26,19 +26,19 @@ function SetStage({user}){
 
   <div class="mt-0  flex flex-col md:flex-row  justify-between" >
     <div>
-      <label class="inline-flex items-center border-yellow-500 border-2 px-6 py-1 rounded-lg">
+      <label class="inline-flex items-center w-44 border-yellow-500 border-2 px-6 py-1 rounded-lg">
         <input type="checkbox" class="form-checkbox" />
         <span class="ml-2">piano</span>
       </label>
     </div>
-    <div>
+    {/* <div>
       <label class="inline-flex items-center  border-yellow-500 border-2 px-6 py-1 rounded-lg">
         <input type="checkbox" class="form-checkbox" />
         <span class="ml-2">guitar</span>
       </label>
-    </div>
+    </div> */}
     <div>
-      <label class="inline-flex items-center  border-yellow-500 border-2 px-6 py-1 rounded-lg">
+      <label class="inline-flex items-center w-44  border-yellow-500 border-2 px-6 py-1 rounded-lg">
         <input type="checkbox" class="form-checkbox" />
         <span class="ml-2">drums</span>
       </label>

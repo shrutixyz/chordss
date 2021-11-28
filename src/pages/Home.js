@@ -3,7 +3,13 @@ import IntroImage from "../components/introimage";
 import NavBar from "../components/Navbar";
 
 function Home({user}){
-
+    var path = "/login"
+if(user==null){
+    path = "/login"
+}
+else{
+    path = "/conference"
+}
     return (
         <>
         <NavBar user={user}/>
@@ -22,7 +28,8 @@ function Home({user}){
             <a href="#about">
             <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" >Learn More</button>
                 </a>
-                <Link to="/login">
+
+                <Link to={path}>
                 <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400" >Get Started</button>
             </Link>
            
