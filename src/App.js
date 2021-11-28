@@ -26,7 +26,7 @@ import Curtain from './components/curtain'
 
 function App() {
   useEffect(() => {
-    document.title = "chords";  
+    document.title = "chordz";  
   }, []);
 
   const [user, setuser] = useState(null)
