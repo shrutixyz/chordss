@@ -2,14 +2,14 @@
 import VoxeetSDK from "@voxeet/voxeet-web-sdk"
 import React, {useState, useEffect} from "react";
 import endCall from '../images/call-end.svg'
-function Meeting ({user, participantList, leaveroom}){
+function Meeting ({user, participantList, cfname ,leaveroom}){
   
 
 
   return(
     <div className="m-6">
       <div className="flex justify-between ">
-        <h1>jam name</h1>
+        <h1>{cfname}</h1>
         <h1>share</h1>
       </div>
       <br />

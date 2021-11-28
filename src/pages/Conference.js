@@ -8,6 +8,7 @@ const ConferenceJam = ({user}) => {
     const [isJoin, setisJoin] = useState(true)
     const [inMeeting, setinMeeting] = useState(false)
     const [participantList, setparticipantList] = useState([])
+    const [cfname, setcfname] = useState("")
 
     const navigate = useNavigate();
 
@@ -50,6 +51,7 @@ const ConferenceJam = ({user}) => {
                 console.log('join')
                 setisJoin(false)
             setinMeeting(true)
+            setcfname(conferenceAlias)
             })
             .catch((err) => console.error(err));
     };
@@ -88,6 +90,7 @@ const ConferenceJam = ({user}) => {
             console.log('join')
             setisJoin(false)
             setinMeeting(true)
+            setcfname(conferenceAlias)
         })
         .catch((err) => console.error(err));
     };
@@ -119,7 +122,7 @@ const ConferenceJam = ({user}) => {
             }
             {
                 inMeeting? <>
-                    <Meeting user={user} participantList = {participantList} leaveroom={leaveroom}/>
+                    <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
                 
                 </> : ""
             }
