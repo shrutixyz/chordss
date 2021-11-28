@@ -20,6 +20,7 @@ import Baamzi from './pages/baamzi';
 import ConferenceJam from './pages/Conference';
 import LolDrum from './components/lol_drum'
 import LolPiano from './components/lolpiano'
+import Left from './pages/Left';
 
 
 function App() {
@@ -71,6 +72,9 @@ function App() {
       
       <Route path="/loldrum" element = {<LolDrum user={user}/>}/>
       <Route path="/lolpiano" element = {<LolPiano user={user}/>}/>
+      <Route path="/left"  element={<Left/>} />
+        
+      
         </Routes>
       </div>
     </Router>

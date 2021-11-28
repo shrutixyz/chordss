@@ -3,7 +3,7 @@ import NavBar from "../components/Navbar";
 import Logo from '../images/drummer.svg';
 import {useEffect, useState} from 'react'
 import {auth} from '../components/utils/firebase';
-function NewJam({user, joinroom}){
+function NewJam({user, joinroom, joinperformer}){
   const history = useNavigate()
     console.log(user)
     useEffect(() => {
@@ -28,6 +28,7 @@ function NewJam({user, joinroom}){
   </form>
 
 <button className=" ml-10  p-1 w-40 mb-2 rounded-lg bg-yellow-400 text-black" onClick={() => {joinroom(conferenceAlias)} }>join as attendee</button>
+<button className=" ml-10  p-1 w-40 mb-2 rounded-lg bg-yellow-400 text-black" onClick={() => {joinperformer(conferenceAlias)} }>join</button>
 
 <p className="ml-28">or</p>
 <Link to='/setstage'>
