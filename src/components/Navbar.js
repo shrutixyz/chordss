@@ -14,7 +14,10 @@ function NavBar({user}){
   }
 
   var showhide = "hidden"
-
+  var url = "https://cdn.discordapp.com/attachments/873911460055642152/914428700500578314/unknown.png"
+if(user!=null){
+   url = "https://firebasestorage.googleapis.com/v0/b/chordzz.appspot.com/o/pfp%2F"+user.email.split("@")[0]+"%40"+user.email.split("@")[1]+".png?alt=media";
+}
   // var url = "https://firebasestorage.googleapis.com/v0/b/chordzz.appspot.com/o/pfp%2F"+user.email.split("@")[0]+"%40"+user.email.split("@")[1]+".png?alt=media";
   var show = "login"
 
@@ -48,7 +51,7 @@ function NavBar({user}){
       {user? <div className="flex gap-3">
         
       <p>{user.email}   </p>
-       {/* <img src={url} className="h-8 w-8"/> */}
+       <img src={url} className="h-8 w-8 rounded-full"/>
    <button onClick={handleLogOut}  class="inline-block text-sm px-4 mr-4 py-2 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Logout</button>
    
         
