@@ -3,16 +3,29 @@ import IntroImage  from "../components/introimage";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { storage } from "../components/utils/firebase";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import {registerWithEmailAndPassword} from '../components/utils/firebase';
 function Signup({user}){
+  var hehe = " ";
+  const storag = getStorage();
   const [image , setImage] = useState('');
   const upload = ()=>{
     if(image == null)
       return;
     storage.ref(`/pfp/${document.getElementById('username').value}.png`).put(image)
-    .on("state_changed" , console.log("success") , alert);
+    .on("state_changed" , console.log(URL) , alert)
+    // getDownloadURL(ref(storag, `pfp/${document.getElementById('username').value}.png`)).then((url)=>{
+    //   hehe = url
+    //   console.log(hehe)
+    //       })
+     
+   
+      registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value)
+ 
 
-    registerWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password').value)
+    
+
+    
   }
 
     return (

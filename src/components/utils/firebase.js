@@ -61,6 +61,7 @@ window.location.href='/newjam'
       // const user = res.currentUser;
       await db.collection("users").doc(email).set({
         email: email,
+        // pfp: url
       }).then((_)=>{
         console.log("ho gaya")
       });
