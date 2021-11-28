@@ -1,0 +1,289 @@
+
+  
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 10px 2px 10px #090909, 2px 10px 10px #090909,
+  }
+  
+  .controls-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .speakers {
+    width: 200px;
+    height: 5px;
+    background: #000;
+    margin: 40px 0 0;
+    box-shadow: 0 15px #000, 0 30px #000, 0 45px #000, 0 60px #000, 0 75px #000;
+    @media (max-width: 600px){
+      display: none;
+    }  
+  }
+  
+  .controls {
+    width: 600px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    .input-container {
+      display: flex;
+      h2 {
+        font-size: 1.48rem;
+      }
+      .input-buttons {
+        padding: 1em 0 0 2.5em;
+        .demo-buttons {
+          display: flex;
+        }
+        .demo-label {
+          padding-right: 40px;
+        }
+        button {
+          background: #7f0101;
+          border-radius: 5%;
+          border: none;
+          padding: 10px 20px;
+          margin: 0 2px 5px;
+          cursor: pointer;
+          &.on {
+            background: lighten(#7f0101, 20%);
+            box-shadow: 0px 0px 2px 2px lighten(#7f0101, 10%);
+          }
+          &.help {
+            background: #006b10;
+            &.on {
+              background: lighten(#006b10, 20%);
+              box-shadow: 0px 0px 2px 2px lighten(#006b10, 20%);
+            }
+          }
+        }
+      }
+    }
+    .inputs {
+      display: flex;
+      input {
+        padding: 0 10px;
+        &.tempo {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+    .input-labels {
+      display: flex;
+      justify-content: space-around;
+      > div {
+        padding: 0 4.5em;
+      }
+     
+    }
+  }
+  
+  //Keyboard
+  .keyboard {
+    width: 95%;
+    height: 160px;
+    display: flex;
+    margin: 10px auto 10px;
+    position: relative;
+  }
+  
+  %key-style {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-family: sans-serif;
+  }
+  
+  .white {
+    @extend %key-style;
+    height: 100%;
+    width: 12.5%;
+    background-color: ivory;
+    box-shadow: 2px 7px 2px #222222;
+    &.played {
+      background-color: #DDDDDD;
+      transform: translate(0, 2px);
+    }
+  }
+  
+  .black {
+    @extend %key-style;
+    height: 70%;
+    width: 3%;
+    position: absolute;
+    z-index: 2;
+    margin-left: -1.6%;
+    background-color: black;
+    color: #FBBF24;
+    @media (max-width: 600px) {
+      width: 6%;
+    }
+    &.played {
+      background-color: #333333;
+      transform: translate(0, 2px);
+    }
+    &.black1 {
+      left: 6.7%;
+    }
+    &.black2 {
+      left: 13.3%;
+    }
+    &.black3 {
+      left: 26.7%;
+    }
+    &.black4 {
+      left: 33.4%;
+    }
+    &.black5 {
+      left: 40%;
+    }
+    &.black6 {
+      left: 53.3%;
+      @media (max-width: 600px) {
+        left: 11%;
+      }
+    }
+    &.black7 {
+      left: 60%;
+      @media (max-width: 600px) {
+        left: 23%;
+      }
+    }
+    &.black8 {
+      left: 73.3%;
+      @media (max-width: 600px) {
+        left: 48.5%;
+      }
+    }
+    &.black9 {
+      left: 80%;
+      @media (max-width: 600px) {
+        left: 61%;
+      }
+    }
+    &.black10 {
+      left: 86.7%;
+      @media (max-width: 600px) {
+        left: 73%;
+      }
+    }
+  }
+  
+  .oct {
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+  
+  //Range input style generated from http://www.cssportal.com/style-input-range/
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    
+    animation: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    background: #000000;
+    border-radius: 0px;
+    border: 1px solid #000000;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 10px;
+    border-radius: 5px;
+    background: #808080;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #000000;
+  }
+  
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animation: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    background: #000000;
+    border-radius: 0px;
+    border: 1px solid #000000;
+  }
+  
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 10px;
+    border-radius: 5px;
+    background: #808080;
+    cursor: pointer;
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  input[type=range]::-ms-fill-lower {
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 0px;
+    box-shadow: 1px 1px 1px #000000;
+  }
+  
+  input[type=range]::-ms-fill-upper {
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 0px;
+    box-shadow: 1px 1px 1px #000000;
+  }
+  
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 10px;
+    border-radius: 5px;
+    background: #808080;
+    cursor: pointer;
+  }
+  
+  input[type=range]:focus::-ms-fill-lower {
+    background: #000000;
+  }
+  
+  input[type=range]:focus::-ms-fill-upper {
+    background: #000000;
+  }

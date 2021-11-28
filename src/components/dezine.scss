@@ -1,0 +1,36 @@
+
+  
+  .keys {
+    width: 60vw;
+    display: flex;
+    text-align:center;
+    padding-top: 5px;
+  
+  }
+  
+  .hey {
+    transition:all 0.07s;
+    display: inline-block;
+    background-color: black;
+    min-height: 60px;
+    width: 70px;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-color: #FBBF24;
+    border-style: solid;
+  }
+  
+  .keydown {
+   transform: scale(1.5);
+   border-color: rgb(232, 118, 232);
+    /*   min-height: 80px;
+    min-width: 80px;
+    border-width: 5px;
+    border-color: RED; */
+  }
+  
+  .letter{
+    font-size: 30px;
+  }

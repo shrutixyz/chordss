@@ -1,5 +1,7 @@
 import Drum from "../components/drum";
 import Guitar from "../components/guitar";
+import LolPiano from "../components/lolpiano";
+import LolDrum from "../components/lol_drum";
 import NavBar from "../components/Navbar";
 import Piano from "../components/piano";
 import {signInWithEmailAndPassword, registerWithEmailAndPassword, logout} from '../components/utils/firebase';
@@ -8,16 +10,8 @@ function Instruments ({user}){
         <>
         <NavBar user={user}/>
         <center>
-        <button className="border-2  p-2 w-40 mb-3 rounded-lg border-yellow-400"  onClick={() => logout()}>testing</button>
-        <p>drum</p>
-        <Drum/>
-        <br/>
-        <p>Piano</p>
-        <Piano/>
-        <br/>
-        <p>Guitar</p>
-        <Guitar/>
-        <br/>
+        <LolPiano/>
+        <LolDrum/>
         </center>
 
         </>
