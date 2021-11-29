@@ -48,8 +48,8 @@ function Meeting ({user, participantList, cfname ,leaveroom}){
           {/* <LolPiano/> */}
           {/* <LolDrum/> */}
           <div className="p-4 mt-8">
-        <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Mute</p>
-        <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Unmute</p>
+        {/* <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Mute</p>
+        <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Unmute</p> */}
         {/* <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0">Start Sharing</p> */}
   
         </div>

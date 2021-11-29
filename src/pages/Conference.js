@@ -16,7 +16,7 @@ const ConferenceJam = ({user}) => {
     const [started, setstarted] = useState(false)
     const [inputList, setinputList] = useState([])
     const [micOption, setmicOption] = useState("")
-    const [componentList, setcomponentList] = useState([])
+    const [isMute, setisMute] = useState(false)
 
 
     const navigate = useNavigate();
@@ -203,6 +203,20 @@ const ConferenceJam = ({user}) => {
                 .catch((err) => console.error(err));
     }
 
+    function muteparticipant(){
+        VoxeetSDK.conference.mute(VoxeetSDK.session.participant, true)
+        setisMute(true)
+    }
+
+    function unmuteparticipant(){
+        VoxeetSDK.conference.mute(VoxeetSDK.session.participant, false)
+        setisMute(false)
+    }
+
+    function muteornah(){
+        return VoxeetSDK.conference.isMuted
+    }
+
     return (
         <div>
             <h1 id="name-message">Logging in...</h1>
@@ -224,9 +238,12 @@ const ConferenceJam = ({user}) => {
                             }) }
                         </select>
                     </div>
+                    {}
                     <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
                     <button id="start-screenshare-btn" onClick={startScreenShare}>Start Screen Share</button>
-                    
+                    <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => muteparticipant()}>Mute</p>
+                    <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => unmuteparticipant()}>Unmute</p>
+                    <p>mute: {isMute? "true": "false"}</p>
                 </> : ""
 
             }
