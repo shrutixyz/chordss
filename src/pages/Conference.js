@@ -16,7 +16,7 @@ const ConferenceJam = ({user}) => {
     const [participantList, setparticipantList] = useState([])
     const [cfname, setcfname] = useState("")
     const [inMeetingAsParticipant, setinMeetingAsParticipant] = useState(false)
-    const [started, setstarted] = useState(false)
+    const [setstarted, setsetstarted] = useState(false)
     const [inputList, setinputList] = useState([])
     const [micOption, setmicOption] = useState("")
     const [isMute, setisMute] = useState(false)
@@ -46,7 +46,7 @@ const ConferenceJam = ({user}) => {
 
     function getDeets(meetingname) {
         // console.log(meetingname)
-        db.collection('jams').doc(meetingname).get().then(item => setstarted(item.data()['meetingStarted']) )
+        db.collection('jams').doc(meetingname).get().then(item => setsetstarted(item.data()['meetingsetstarted']) )
       }
 
     const initUI = () => {
@@ -92,6 +92,13 @@ const ConferenceJam = ({user}) => {
             setcfname(conferenceAlias)
             })
             .then(() => {
+                db.collection("jams").doc(conferenceAlias)
+                .onSnapshot((doc) => {
+                    // console.log("Current data: ", doc.data());
+                    setlisteners(doc.data()['participant'])
+                });
+            })
+            .then(() => {
                 VoxeetSDK.mediaDevice.enumerateAudioDevices("input")
               .then(devices => {
                   console.log(devices)
@@ -127,7 +134,7 @@ const ConferenceJam = ({user}) => {
         console.log(participant)
         addParticipantNode(participant);
         console.log(VoxeetSDK.conference.current.alias)
-        started(true)
+        setstarted(true)
         getDeets(VoxeetSDK.conference.current.alias);
     });
     
@@ -209,8 +216,9 @@ const ConferenceJam = ({user}) => {
 
     function stopShow() {
         db.collection('jams').doc(VoxeetSDK.conference.current.alias).update({
-            'meetingStarted': false
+            'meetingsetstarted': false
         })
+        setstarted(false)
     }
 
     return (
@@ -255,7 +263,7 @@ const ConferenceJam = ({user}) => {
 
             {
                 inMeetingAsParticipant? <>
-                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} started={started}/>
+                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} setstarted={setstarted}/>
                 </> : ""
             }
 
