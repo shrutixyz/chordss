@@ -22,13 +22,14 @@ function NewJam({user, joinroom, joinperformer}){
     <div className="mb-6 w-80 md:w-96 ml-10 mt-20" >
       
       <input className="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="enter code" onChange={e => setconferenceAlias(e.target.value)} value={conferenceAlias} />
+     <br/><br/> <input className="shadow appearance-none border rounded w-full py-2 px-3  border-yellow-400 bg-transparent text-white leading-tight focus:outline-none focus:shadow-outline" id="passkey" type="text" placeholder="enter passkey (only for performers)"  />
     </div>
    
     
   </form>
 
 <button className=" ml-10  p-1 w-40 mb-2 rounded-lg bg-yellow-400 text-black" onClick={() => {joinroom(conferenceAlias)} }>join as attendee</button>
-<button className=" ml-10  p-1 w-40 mb-2 rounded-lg bg-yellow-400 text-black" onClick={() => {joinperformer(conferenceAlias)} }>join</button>
+<button className=" ml-10  p-1 w-40 mb-2 rounded-lg bg-yellow-400 text-black" onClick={() => {joinperformer(conferenceAlias)} }>join as performer</button>
 
 <p className="ml-28">or</p>
 <Link to='/setstage'>
