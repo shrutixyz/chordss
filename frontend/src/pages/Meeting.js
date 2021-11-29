@@ -48,7 +48,7 @@ function Meeting ({user}){
             }
           };
     const main = async () => {
-        VoxeetSDK.initialize('apikey', 'secret key')
+        VoxeetSDK.initialize(process.env.CONSUMER_KEY, process.env.CONSUMER_SECRET)
         try {
             // Open the session here !!!!
             await VoxeetSDK.session.open({ name: randomName })
@@ -86,7 +86,7 @@ function Meeting ({user}){
   </div>
 </div>
 <div id="form">
-  ...
+  
   <button id="join-btn">Join</button>
   <button id="leave-btn" disabled>Leave</button>
 </div>

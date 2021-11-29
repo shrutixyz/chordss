@@ -15,6 +15,7 @@ import Instruments from './pages/instruments';
 import Meeting from './pages/Meeting';
 
 import {auth} from './components/utils/firebase';
+import Trycry from './pages/trycry';
 
 function App() {
   useEffect(() => {

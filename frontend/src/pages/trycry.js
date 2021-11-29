@@ -71,6 +71,16 @@ const Trycry = ({user}) => {
         addParticipantNode(participant);
     });
 
+    VoxeetSDK.conference.on('streamRemoved', (participant, stream) => {
+        
+        removeParticipantNode(participant);
+    });
+
+    function removeParticipantNode(participant) {
+        const result = participantlist.filter(name => name != participant.info.name);
+        setparticipantlist(result)
+    }
+
     function leaveroom(){
         VoxeetSDK.conference
         .leave()
