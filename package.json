@@ -7,6 +7,7 @@
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.0",
+    "@mui/material": "^5.2.2",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -15,6 +16,7 @@
     "@voxeet/voxeet-web-sdk": "^3.3.0",
     "dotenv": "^10.0.0",
     "firebase": "^9.5.0",
+    "mui": "0.0.1",
     "firebase-admin": "^10.0.0",
     "react": "^17.0.2",
     "react-curtain-reveal": "^1.0.3",
@@ -24,6 +26,7 @@
     "react-router-dom": "^6.0.2",
     "react-script-tag": "^1.1.2",
     "react-scripts": "4.0.3",
+    "run": "^1.4.0",
     "sass": "^1.43.4",
     "web-vitals": "^1.1.2"
   },

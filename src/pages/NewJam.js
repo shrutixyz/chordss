@@ -6,6 +6,7 @@ import {auth} from '../components/utils/firebase';
 function NewJam({user, joinroom, joinperformer}){
   const history = useNavigate()
     console.log(user)
+    
     useEffect(() => {
       auth.onAuthStateChanged((user) => {
           if(!user) {history('/'); alert("please log in")}
