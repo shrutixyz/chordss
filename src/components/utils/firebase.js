@@ -80,13 +80,27 @@ window.location.href='/newjam'
     auth.signOut().then(alert("logged out yay"));
   };
 
+
+const newSesh = (code, pass) =>{
+   db.collection("jams").doc(code).set({
+    pass: pass,
+    // pfp: url
+  }).then((_)=>{
+    console.log("ho gaya")
+  });
+}
+
   export {
     auth,
     db,
     signInWithEmailAndPassword,
     registerWithEmailAndPassword,
     logout,
-    storage
+    newSesh,
+    storage,
+    
   };
+
+  // export const newSesh = newSesh 
 
   
