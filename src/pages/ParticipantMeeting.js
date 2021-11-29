@@ -9,7 +9,7 @@ import LolPiano from "../components/lolpiano";
 import LolDrum from "../components/lol_drum";
 import { collection, doc, setDoc, getDoc } from "firebase/firestore"; 
 import { db } from '../components/utils/firebase'
-function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started}){
+function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started, listeners}){
   
   var details = `Hey, join us at this amazing jam session '${cfname}' happening right now at https://chordzz.web.app`
   
@@ -43,6 +43,10 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started}
       <div className="flex justify-between flex-col-reverse md:flex-row  gap-12">
         <div className="bg-greyish h-nv w-1/1 md:w-1/3">
           {participantList.map(item => {
+            return <h1>{item}</h1>
+          })}
+          Listeners:
+          {listeners.map(item => {
             return <h1>{item}</h1>
           })}
         </div>

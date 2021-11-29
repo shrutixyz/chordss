@@ -8,6 +8,7 @@ import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from '../components/utils/firebase'
 import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
+import firebase from '@firebase/app-compat'
 
 const ConferenceJam = ({user}) => {
     const [isJoin, setisJoin] = useState(true)
@@ -19,6 +20,7 @@ const ConferenceJam = ({user}) => {
     const [inputList, setinputList] = useState([])
     const [micOption, setmicOption] = useState("")
     const [isMute, setisMute] = useState(false)
+    const [listeners, setlisteners] = useState([])
 
 
     const navigate = useNavigate();
@@ -125,13 +127,14 @@ const ConferenceJam = ({user}) => {
         console.log(participant)
         addParticipantNode(participant);
         console.log(VoxeetSDK.conference.current.alias)
+       
         getDeets(VoxeetSDK.conference.current.alias);
     });
     
     function joinroom(conferenceAlias) {
         
-        console.log(conferenceAlias)
-        setcfname(conferenceAlias)
+        // console.log(conferenceAlias)
+        // setcfname(conferenceAlias)
         /*
         1. Create a conference room with an alias
         2. Join the conference with its id
@@ -145,24 +148,14 @@ const ConferenceJam = ({user}) => {
             setinMeeting(false)
             setcfname(conferenceAlias)
             setinMeetingAsParticipant(true)
+
         })
+
         .then(() => {
-            // const unsub = onSnapshot(doc(db, "meeting", "lmao"), (doc) => {
-            //     console.log(" data: ", doc.data());
-            //     setstarted(doc.data[''])
-            //   });
-            // const docRef = doc(db, "meeting", "lmao");
-            // getDoc(docRef).then(docSnap => {
-
-            //     if (docSnap.exists()) {
-            //     console.log("Document data:", docSnap.data());
-            //     setstarted(docSnap.data()['meetingStarted'])
-            //     } else {
-            //     // doc.data() will be undefined in this case
-            //     console.log("No such document!");
-            //     }
-            // })
-
+            const n = VoxeetSDK.session.participant.info.name
+            db.collection('jams').doc(conferenceAlias).update({
+                participant: firebase.firestore.FieldValue.arrayUnion(n)
+            })  
         })
         .catch((err) => console.error(err));
     };
@@ -255,14 +248,14 @@ const ConferenceJam = ({user}) => {
                     </div>
                 </div>
                     {}
-                    <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
+                    <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} listeners={listeners}/>
                 </> : ""
 
             }
 
             {
                 inMeetingAsParticipant? <>
-                    <ParticipantMeeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} started={started}/>
+                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} started={started}/>
                 </> : ""
             }
 

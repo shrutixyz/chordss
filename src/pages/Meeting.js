@@ -7,7 +7,7 @@ import Curtain from "../components/curtain";
 import Instruments from "./instruments";
 import LolPiano from "../components/lolpiano";
 import LolDrum from "../components/lol_drum";
-function Meeting ({user, participantList, cfname ,leaveroom}){
+function Meeting ({user, participantList, cfname ,leaveroom,listeners}){
   
   var details = `Hey, join us at this amazing jam session '${cfname}' happening right now at https://chordzz.web.app`
 
@@ -33,6 +33,10 @@ function Meeting ({user, participantList, cfname ,leaveroom}){
       <div className="flex justify-between flex-col-reverse md:flex-row  gap-12">
         <div className="bg-greyish h-nv w-1/1 md:w-1/3">
           {participantList.map(item => {
+            return <h1>{item}</h1>
+          })}
+          Listeners:
+          {listeners.map(item => {
             return <h1>{item}</h1>
           })}
         </div>

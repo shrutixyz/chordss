@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import NavBar from '../components/Navbar';
 import Logo from '../images/guitarist.svg';
 import {useEffect} from 'react'
-import {auth, newSesh} from '../components/utils/firebase';
+import {auth, db} from '../components/utils/firebase';
 function SetStage({user}){
   const history = useNavigate()
   useEffect(() => {
@@ -11,6 +11,17 @@ function SetStage({user}){
         
     })
 },[])
+
+const newSesh = (code, pass) =>{
+  db.collection("jams").doc(code).set({
+   pass: pass,
+   meetingStarted: false,
+   participant : []
+   // pfp: url
+ }).then((_)=>{
+   console.log("ho gaya")
+ });
+}
 
     return (
         <>
