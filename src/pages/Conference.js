@@ -6,6 +6,8 @@ import {useNavigate} from 'react-router-dom'
 import ParticipantMeeting from './ParticipantMeeting'
 import { collection, doc, setDoc, getDoc } from "firebase/firestore"; 
 import { db } from '../components/utils/firebase'
+import MicOffIcon from '@mui/icons-material/MicOff';
+import MicIcon from '@mui/icons-material/Mic';
 
 const ConferenceJam = ({user}) => {
     const [isJoin, setisJoin] = useState(true)
@@ -230,6 +232,8 @@ const ConferenceJam = ({user}) => {
             }
             {
                 inMeeting? <>
+                <div className="flex justify-between">
+
                     <div class="form">
                         <label for="input-audio-devices">Input Audio Devices:</label>
                         <select id="input-audio-devices" class="custom-select" value={micOption} onChange={e => handleChange(e)}>
@@ -239,13 +243,19 @@ const ConferenceJam = ({user}) => {
                             }) }
                         </select>
                     </div>
+                    <div className="">
+
+                        <button  className="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" id="start-screenshare-btn" onClick={startScreenShare}>Start Screen Share</button>
+
+                        <button className= "inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={stopShow}>End Show</button>
+                        <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => muteparticipant()}>Mute</p>
+                        <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => unmuteparticipant()}>Unmute</p>
+                        {/* <p>mute: {isMute? "<MicOffIcon />": "<MicIcon />"}</p> */}
+                        <p>mute: {isMute? <MicOffIcon />: <MicIcon />}</p>
+                    </div>
+                </div>
                     {}
                     <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
-                    <button id="start-screenshare-btn" onClick={startScreenShare}>Start Screen Share</button>
-                    <button onClick={stopShow}>End Show</button>
-                    <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => muteparticipant()}>Mute</p>
-                    <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => unmuteparticipant()}>Unmute</p>
-                    <p>mute: {isMute? "true": "false"}</p>
                 </> : ""
 
             }
