@@ -46,7 +46,7 @@ function SetStage({user}){
     </div>
   </div>
 </div>
-    <Link to='/newjam'>
+    <Link to='/conference'>
 <button className=" ml-0  p-1 w-40 mb-2 mt-8 rounded-lg bg-yellow-400 text-black"  onClick={()=>newSesh(document.getElementById('seshname').value, document.getElementById('seshpass').value)}>jam it!</button>
 </Link>
         </div>
