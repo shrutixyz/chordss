@@ -41,17 +41,8 @@ const ConferenceJam = ({user}) => {
     
 
     function getDeets(meetingname) {
-        const docRef = doc(db, "meeting", 'lmao');
-        getDoc(docRef).then(docSnap => {
-    
-            if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-            setstarted(docSnap.data()['meetingStarted'])
-            } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-            }
-        })
+        // console.log(meetingname)
+        db.collection('meeting').doc(meetingname).get().then(item => setstarted(item.data()['meetingStarted']) )
       }
 
     const initUI = () => {
@@ -82,7 +73,7 @@ const ConferenceJam = ({user}) => {
 
     function joinperformer(conferenceAlias) {
         
-
+        setcfname(conferenceAlias)
         /*
         1. Create a conference room with an alias
         2. Join the conference with its id
@@ -124,16 +115,21 @@ const ConferenceJam = ({user}) => {
     }, [participantList])
 
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
-        if (stream.type === 'ScreenShare') return addScreenShareNode(stream);
+        if (stream.type === 'ScreenShare') {
+
+            return addScreenShareNode(stream)
+        };
         console.log("stream added")
         console.log(participant)
         addParticipantNode(participant);
-        getDeets(cfname);
+        console.log(VoxeetSDK.conference.current.alias)
+        getDeets(VoxeetSDK.conference.current.alias);
     });
     
     function joinroom(conferenceAlias) {
         
         console.log(conferenceAlias)
+        setcfname(conferenceAlias)
         /*
         1. Create a conference room with an alias
         2. Join the conference with its id
@@ -153,17 +149,17 @@ const ConferenceJam = ({user}) => {
             //     console.log(" data: ", doc.data());
             //     setstarted(doc.data[''])
             //   });
-            const docRef = doc(db, "meeting", "lmao");
-            getDoc(docRef).then(docSnap => {
+            // const docRef = doc(db, "meeting", "lmao");
+            // getDoc(docRef).then(docSnap => {
 
-                if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
-                setstarted(docSnap.data()['meetingStarted'])
-                } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-                }
-            })
+            //     if (docSnap.exists()) {
+            //     console.log("Document data:", docSnap.data());
+            //     setstarted(docSnap.data()['meetingStarted'])
+            //     } else {
+            //     // doc.data() will be undefined in this case
+            //     console.log("No such document!");
+            //     }
+            // })
 
         })
         .catch((err) => console.error(err));
@@ -199,6 +195,9 @@ const ConferenceJam = ({user}) => {
         VoxeetSDK.conference.startScreenShare()
                 .then(() => {
                     console.log("start screen share")
+                    db.collection('meeting').doc(VoxeetSDK.conference.current.alias).update({
+                        'meetingStarted' : true
+                    })
                 })
                 .catch((err) => console.error(err));
     }
@@ -213,8 +212,10 @@ const ConferenceJam = ({user}) => {
         setisMute(false)
     }
 
-    function muteornah(){
-        return VoxeetSDK.conference.isMuted
+    function stopShow() {
+        db.collection('meeting').doc(VoxeetSDK.conference.current.alias).update({
+            'meetingStarted': false
+        })
     }
 
     return (
@@ -241,6 +242,7 @@ const ConferenceJam = ({user}) => {
                     {}
                     <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
                     <button id="start-screenshare-btn" onClick={startScreenShare}>Start Screen Share</button>
+                    <button onClick={stopShow}>End Show</button>
                     <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => muteparticipant()}>Mute</p>
                     <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => unmuteparticipant()}>Unmute</p>
                     <p>mute: {isMute? "true": "false"}</p>

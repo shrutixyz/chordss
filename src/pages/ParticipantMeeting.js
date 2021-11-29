@@ -47,7 +47,7 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started}
           })}
         </div>
         <div className="bg-greyish w-1/1 md:w-2/3 h-nv overflow-hidden">
-            {started? <Curtain/>: <div><h1>wave</h1></div> }
+            {!started? <Curtain/>: <div><h1>wave</h1></div> }
           
           {/* <Instruments/> */}
           {/* <LolPiano/> */}
