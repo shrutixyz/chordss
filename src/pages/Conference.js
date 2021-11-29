@@ -42,7 +42,7 @@ const ConferenceJam = ({user}) => {
 
     function getDeets(meetingname) {
         // console.log(meetingname)
-        db.collection('meeting').doc(meetingname).get().then(item => setstarted(item.data()['meetingStarted']) )
+        db.collection('jams').doc(meetingname).get().then(item => setstarted(item.data()['meetingStarted']) )
       }
 
     const initUI = () => {
@@ -195,7 +195,7 @@ const ConferenceJam = ({user}) => {
         VoxeetSDK.conference.startScreenShare()
                 .then(() => {
                     console.log("start screen share")
-                    db.collection('meeting').doc(VoxeetSDK.conference.current.alias).update({
+                    db.collection('jams').doc(VoxeetSDK.conference.current.alias).update({
                         'meetingStarted' : true
                     })
                 })
@@ -213,7 +213,7 @@ const ConferenceJam = ({user}) => {
     }
 
     function stopShow() {
-        db.collection('meeting').doc(VoxeetSDK.conference.current.alias).update({
+        db.collection('jams').doc(VoxeetSDK.conference.current.alias).update({
             'meetingStarted': false
         })
     }
