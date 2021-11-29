@@ -81,15 +81,7 @@ window.location.href='/newjam'
   };
 
 
-const newSesh = (code, pass) =>{
-   db.collection("jams").doc(code).set({
-    pass: pass,
-    meetingStarted: false
-    // pfp: url
-  }).then((_)=>{
-    console.log("ho gaya")
-  });
-}
+
 
   export {
     auth,
@@ -97,7 +89,6 @@ const newSesh = (code, pass) =>{
     signInWithEmailAndPassword,
     registerWithEmailAndPassword,
     logout,
-    newSesh,
     storage,
     
   };
