@@ -128,13 +128,13 @@ const ConferenceJam = ({user}) => {
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
         if (stream.type === 'ScreenShare') {
 
+            setstarted(true)
             return addScreenShareNode(stream)
         };
         console.log("stream added")
         console.log(participant)
         addParticipantNode(participant);
         console.log(VoxeetSDK.conference.current.alias)
-        setstarted(true)
         getDeets(VoxeetSDK.conference.current.alias);
     });
     
