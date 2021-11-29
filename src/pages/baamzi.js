@@ -8,6 +8,7 @@ const Baamzi = ({user}) => {
 
     const [conferenceAlias, setconferenceAlias] = useState("")
     const [participantlist, setparticipantlist] = useState([])
+    const [inputList, setinputList] = useState([])
 
     const startScreenShareBtn = document.getElementById("start-screenshare-btn");
 
@@ -37,6 +38,7 @@ const Baamzi = ({user}) => {
         setInputAudioDeviceBtn.onclick = async () => {
             let selectedInputAudioDevice = inputAudioDevices.options[inputAudioDevices.selectedIndex];
             alert(`Your input audio device (mic) has been set to: ${selectedInputAudioDevice.text}`)
+            console.log(selectedInputAudioDevice.value)
             await VoxeetSDK.mediaDevice.selectAudioInput(selectedInputAudioDevice.value);
         }
         
@@ -175,7 +177,11 @@ const Baamzi = ({user}) => {
            
         <div class="form">
             <label for="input-audio-devices">Input Audio Devices:</label>
-            <select id="input-audio-devices" class="custom-select"></select>
+            <select id="input-audio-devices" class="custom-select">
+                {inputList.map(item => {
+                    <option value={item}></option>
+                })}
+            </select>
             <button id="set-input-audio-device-btn" type="button" disabled>Set</button>
         </div>
            <div id="actions">

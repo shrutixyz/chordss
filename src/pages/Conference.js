@@ -14,11 +14,34 @@ const ConferenceJam = ({user}) => {
     const [cfname, setcfname] = useState("")
     const [inMeetingAsParticipant, setinMeetingAsParticipant] = useState(false)
     const [started, setstarted] = useState(false)
+    const [inputList, setinputList] = useState([])
+    const [micOption, setmicOption] = useState("")
+    const [componentList, setcomponentList] = useState([])
+
 
     const navigate = useNavigate();
 
+    const startScreenShareBtn = document.getElementById("start-screenshare-btn");
+
+    const addScreenShareNode = stream => {
+        
+        const screenShareContainer = document.getElementById("screenshare-container");
+        let screenShareNode = document.getElementById("screenshare");
+      
+        // if (screenShareNode) {
+        //   return alert("There is already a participant sharing their screen!");
+        // }
+        screenShareNode = document.createElement("video");
+        screenShareNode.autoplay = "autoplay";
+        screenShareNode.style.display = "none" // although the screen is shared but it wont be visible yay
+        navigator.attachMediaStream(screenShareNode, stream);
+      
+        screenShareContainer.appendChild(screenShareNode);
+      }
+    
+
     function getDeets(meetingname) {
-        const docRef = doc(db, "meeting", "lmao");
+        const docRef = doc(db, "meeting", 'lmao');
         getDoc(docRef).then(docSnap => {
     
             if (docSnap.exists()) {
@@ -34,7 +57,7 @@ const ConferenceJam = ({user}) => {
     const initUI = () => {
         const nameMessage = document.getElementById("name-message");
         nameMessage.innerHTML = `You are logged in as ${user.email}`;
-        };
+    }
 
     useEffect(() => {
         if(user){
@@ -73,6 +96,15 @@ const ConferenceJam = ({user}) => {
             setinMeetingAsParticipant(false)
             setcfname(conferenceAlias)
             })
+            .then(() => {
+                VoxeetSDK.mediaDevice.enumerateAudioDevices("input")
+              .then(devices => {
+                  console.log(devices)
+                  setinputList(devices)
+     
+              })
+              .catch(err => console.error(err));
+            })
             
             .catch((err) => console.error(err));
     };
@@ -92,6 +124,7 @@ const ConferenceJam = ({user}) => {
     }, [participantList])
 
     VoxeetSDK.conference.on("streamAdded", (participant, stream) => {
+        if (stream.type === 'ScreenShare') return addScreenShareNode(stream);
         console.log("stream added")
         console.log(participant)
         addParticipantNode(participant);
@@ -155,16 +188,45 @@ const ConferenceJam = ({user}) => {
         .catch((err) => console.error(err));
     }
 
+    async function handleChange(e){
+        console.log(e.target.value)
+        setmicOption(e.target.value)
+        alert(`Your input audio device (mic) has been set to: ${e.target.value}`)
+        await VoxeetSDK.mediaDevice.selectAudioInput(e.target.value);
+    }
+
+    function startScreenShare(){
+        VoxeetSDK.conference.startScreenShare()
+                .then(() => {
+                    console.log("start screen share")
+                })
+                .catch((err) => console.error(err));
+    }
+
     return (
         <div>
             <h1 id="name-message">Logging in...</h1>
+            <div id="video-container" className="hidden"></div>
+                    <div id="screenshare-container">
+                        
+                    </div>
             {
                 isJoin? <NewJam user={user} joinroom={joinroom} joinperformer={joinperformer} /> : ""
             }
             {
                 inMeeting? <>
+                    <div class="form">
+                        <label for="input-audio-devices">Input Audio Devices:</label>
+                        <select id="input-audio-devices" class="custom-select" value={micOption} onChange={e => handleChange(e)}>
+                            { inputList.map((item) => {
+                                
+                                return <option value={item.deviceId} key={item.deviceId}>{item.label}</option>
+                            }) }
+                        </select>
+                    </div>
                     <Meeting user={user} participantList = {participantList} leaveroom={leaveroom} cfname={cfname}/>
-                
+                    <button id="start-screenshare-btn" onClick={startScreenShare}>Start Screen Share</button>
+                    
                 </> : ""
 
             }
