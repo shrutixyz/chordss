@@ -16,7 +16,7 @@ const ConferenceJam = ({user}) => {
     const [participantList, setparticipantList] = useState([])
     const [cfname, setcfname] = useState("")
     const [inMeetingAsParticipant, setinMeetingAsParticipant] = useState(false)
-    const [setstarted, setsetstarted] = useState(false)
+    const [started, setstarted] = useState(false)
     const [inputList, setinputList] = useState([])
     const [micOption, setmicOption] = useState("")
     const [isMute, setisMute] = useState(false)
@@ -46,7 +46,7 @@ const ConferenceJam = ({user}) => {
 
     function getDeets(meetingname) {
         // console.log(meetingname)
-        db.collection('jams').doc(meetingname).get().then(item => setsetstarted(item.data()['meetingsetstarted']) )
+        db.collection('jams').doc(meetingname).get().then(item => setstarted(item.data()['meetingStarted']) )
       }
 
     const initUI = () => {
@@ -216,7 +216,7 @@ const ConferenceJam = ({user}) => {
 
     function stopShow() {
         db.collection('jams').doc(VoxeetSDK.conference.current.alias).update({
-            'meetingsetstarted': false
+            'meetingStarted': false
         })
         setstarted(false)
     }
@@ -263,7 +263,7 @@ const ConferenceJam = ({user}) => {
 
             {
                 inMeetingAsParticipant? <>
-                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} setstarted={setstarted}/>
+                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} started={started}/>
                 </> : ""
             }
 

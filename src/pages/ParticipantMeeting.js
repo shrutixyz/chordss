@@ -48,7 +48,7 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
           
         </div>
         <div className="bg-greyish w-1/1 md:w-2/3 h-nv overflow-hidden">
-            {!started? <Curtain/>: <div><h1>wave</h1></div> }
+            {!started? <Curtain/>: <div><img src="https://media.discordapp.net/attachments/873911460055642152/914948605956202516/Untitled_design_1.gif" alt="" /></div> }
           
           {/* <Instruments/> */}
           {/* <LolPiano/> */}
