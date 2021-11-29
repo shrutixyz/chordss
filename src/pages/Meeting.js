@@ -35,10 +35,7 @@ function Meeting ({user, participantList, cfname ,leaveroom,listeners}){
           {participantList.map(item => {
             return <h1>{item}</h1>
           })}
-          Listeners:
-          {listeners.map(item => {
-            return <h1>{item}</h1>
-          })}
+          
         </div>
         <div className="bg-greyish w-1/1 md:w-2/3 h-nv">
         

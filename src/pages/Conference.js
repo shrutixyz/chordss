@@ -127,7 +127,7 @@ const ConferenceJam = ({user}) => {
         console.log(participant)
         addParticipantNode(participant);
         console.log(VoxeetSDK.conference.current.alias)
-       
+        started(true)
         getDeets(VoxeetSDK.conference.current.alias);
     });
     
