@@ -169,9 +169,11 @@ const ConferenceJam = ({user}) => {
             })  
         })
         .then(() => {
-            db.collection('jams').doc(conferenceAlias).get().then(doc => {
-                setlisteners(doc.data()['participant'])
-            })
+            db.collection("jams").doc(conferenceAlias)
+                .onSnapshot((doc) => {
+                    // console.log("Current data: ", doc.data());
+                    setlisteners(doc.data()['participant'])
+                });
         })
         .catch((err) => console.error(err));
     };
