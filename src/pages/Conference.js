@@ -74,6 +74,10 @@ const ConferenceJam = ({user}) => {
         }
     }, user)
 
+    useEffect(() => {
+        console.log(listeners)
+    }, [listeners])
+
 
     function joinperformer(conferenceAlias) {
         
@@ -163,6 +167,11 @@ const ConferenceJam = ({user}) => {
             db.collection('jams').doc(conferenceAlias).update({
                 participant: firebase.firestore.FieldValue.arrayUnion(n)
             })  
+        })
+        .then(() => {
+            db.collection('jams').doc(conferenceAlias).get().then(doc => {
+                setlisteners(doc.data()['participant'])
+            })
         })
         .catch((err) => console.error(err));
     };
