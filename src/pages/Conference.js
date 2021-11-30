@@ -79,40 +79,50 @@ const ConferenceJam = ({user}) => {
     }, [listeners])
 
 
-    function joinperformer(conferenceAlias) {
+    function joinperformer(conferenceAlias, pwd) {
         
         setcfname(conferenceAlias)
         /*
         1. Create a conference room with an alias
         2. Join the conference with its id
         */
-        VoxeetSDK.conference.create({ alias: conferenceAlias })
-            .then((conference) => VoxeetSDK.conference.join(conference, {}))
-            .then(() => {
-                console.log('join')
-                setisJoin(false)
-            setinMeeting(true)
-            setinMeetingAsParticipant(false)
-            setcfname(conferenceAlias)
-            })
-            .then(() => {
-                db.collection("jams").doc(conferenceAlias)
-                .onSnapshot((doc) => {
-                    // console.log("Current data: ", doc.data());
-                    setlisteners(doc.data()['participant'])
-                });
-            })
-            .then(() => {
-                VoxeetSDK.mediaDevice.enumerateAudioDevices("input")
-              .then(devices => {
-                  console.log(devices)
-                  setinputList(devices)
-     
-              })
-              .catch(err => console.error(err));
-            })
-            
-            .catch((err) => console.error(err));
+
+        db.collection('jams').doc(conferenceAlias).get().then(doc => {
+            const p = doc.data()['pass']
+
+            if(p == pwd){
+
+                VoxeetSDK.conference.create({ alias: conferenceAlias })
+                    .then((conference) => VoxeetSDK.conference.join(conference, {}))
+                    .then(() => {
+                        console.log('join')
+                        setisJoin(false)
+                    setinMeeting(true)
+                    setinMeetingAsParticipant(false)
+                    setcfname(conferenceAlias)
+                    })
+                    .then(() => {
+                        db.collection("jams").doc(conferenceAlias)
+                        .onSnapshot((doc) => {
+                            // console.log("Current data: ", doc.data());
+                            setlisteners(doc.data()['participant'])
+                        });
+                    })
+                    .then(() => {
+                        VoxeetSDK.mediaDevice.enumerateAudioDevices("input")
+                      .then(devices => {
+                          console.log(devices)
+                          setinputList(devices)
+             
+                      })
+                      .catch(err => console.error(err));
+                    })
+                    
+                    .catch((err) => console.error(err));
+            } else {
+                alert("Incorrect password, try again!!!")
+            }
+        })
     };
      
     const addParticipantNode = participant => {
