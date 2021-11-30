@@ -34,6 +34,8 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
       <div className="flex justify-between ">
         <h1>{cfname}</h1>
         <div className="flex" >
+          
+        <img src={endCall} alt="" className="h-10" onClick={() => leaveroom()}/>
           <h1 className="px-3" id="copytext"></h1>
         <BiShareAlt onClick={() =>  copy()} className="h-8 w-8"/>
         </div>
@@ -42,13 +44,24 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
       {console.log(participantList)}
       <div className="flex justify-between flex-col-reverse md:flex-row  gap-12">
         <div className="bg-greyish h-nv w-1/1 md:w-1/3 overflow-y-scroll">
-          {participantList.map(item => {
+         
+          {participantList.length > 0 ? <div>
+            Performers:
+            {participantList.map(item => {
             return <h1>{item}</h1>
           })}
-          Listeners:
-          {listeners.map(item => {
+          </div> : <h1>No performer has joined yet</h1> }
+            
+          <br /><br /> <br />
+
+          {listeners.length > 0 ? <div>
+            Listeners:
+            {listeners.map(item => {
             return <h1>{item}</h1>
           })}
+          </div> : <h1>No performer has joined yet</h1> }
+
+         
           
         </div>
         <div className="bg-greyish w-1/1 md:w-2/3 h-nv overflow-hidden">
@@ -64,7 +77,6 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
       <br />
       <div className="flex justify-between ">
         <h3>attendees</h3>
-        <img src={endCall} alt="" className="h-10" onClick={() => leaveroom()}/>
       </div>
     
     </div>

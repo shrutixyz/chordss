@@ -207,6 +207,16 @@ const ConferenceJam = ({user}) => {
         .catch((err) => console.error(err));
     }
 
+    function leaveparticipantroom(){
+        const n = VoxeetSDK.session.participant.info.name
+        db.collection('jams').doc(VoxeetSDK.conference.current.alias).update({
+            participant: firebase.firestore.FieldValue.arrayRemove(n)
+        }).then(() => {
+            navigate('/left')
+        })
+
+    }
+
     async function handleChange(e){
         console.log(e.target.value)
         setmicOption(e.target.value)
@@ -284,7 +294,7 @@ const ConferenceJam = ({user}) => {
 
             {
                 inMeetingAsParticipant? <>
-                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveroom} cfname={cfname} started={started}/>
+                    <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveparticipantroom} cfname={cfname} started={started}/>
                 </> : ""
             }
 

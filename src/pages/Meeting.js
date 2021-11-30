@@ -31,14 +31,23 @@ function Meeting ({user, participantList, cfname ,leaveroom,listeners}){
       <br />
       {console.log(participantList)}
       <div className="flex justify-between flex-col-reverse md:flex-row  gap-12">
-        <div className="bg-greyish h-nv w-1/1 md:w-1/3">
-          {participantList.map(item => {
+        <div className="bg-greyish h-nv w-1/1 overflow-y-scroll md:w-1/3">
+        {participantList.length > 0 ? <div>
+            Performers:
+            {participantList.map(item => {
             return <h1>{item}</h1>
           })}
-           Listeners:
-          {listeners.map(item => {
+          </div> : <h1>No performer has joined yet</h1> }
+            
+          <br /><br /> <br />
+
+          {listeners.length > 0 ? <div>
+            Listeners:
+            {listeners.map(item => {
             return <h1>{item}</h1>
           })}
+          </div> : <h1>No performer has joined yet</h1> }
+
           
         </div>
         <div className="bg-greyish w-1/1 md:w-2/3 h-nv">
