@@ -25,7 +25,7 @@ function Meeting ({user, participantList, cfname ,leaveroom,listeners}){
         <h1>{cfname}</h1>
         <div className="flex" >
           <h1 className="px-3" id="copytext"></h1>
-        <BiShareAlt onClick={() =>  copy()} className="h-8 w-8"/>
+        <BiShareAlt onClick={() =>  copy()} className="h-8 w-8 cursor-pointer"/>
         </div>
       </div>
       <br />
@@ -72,7 +72,7 @@ function Meeting ({user, participantList, cfname ,leaveroom,listeners}){
       <br />
       <div className="flex justify-between ">
         <h3>attendees</h3>
-        <img src={endCall} alt="" className="h-10" onClick={() => leaveroom()}/>
+        <img src={endCall} alt="" className="h-10 cursor-pointer" onClick={() => leaveroom()}/>
       </div>
     
     </div>
