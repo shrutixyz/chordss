@@ -41,8 +41,12 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
       <br />
       {console.log(participantList)}
       <div className="flex justify-between flex-col-reverse md:flex-row  gap-12">
-        <div className="bg-greyish h-nv w-1/1 md:w-1/3">
+        <div className="bg-greyish h-nv w-1/1 md:w-1/3 overflow-y-scroll">
           {participantList.map(item => {
+            return <h1>{item}</h1>
+          })}
+          Listeners:
+          {listeners.map(item => {
             return <h1>{item}</h1>
           })}
           
