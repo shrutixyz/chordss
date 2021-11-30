@@ -16,7 +16,8 @@ const newSesh = (code, pass) =>{
   db.collection("jams").doc(code).set({
    pass: pass,
    meetingStarted: false,
-   participant : []
+   participant : [],
+   reacttion: ""
    // pfp: url
  }).then((_)=>{
    console.log("ho gaya")

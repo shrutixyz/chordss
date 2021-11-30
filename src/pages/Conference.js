@@ -9,6 +9,7 @@ import { db } from '../components/utils/firebase'
 import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
 import firebase from '@firebase/app-compat'
+import FadeIn from 'react-fade-in';
 
 const ConferenceJam = ({user}) => {
     const [isJoin, setisJoin] = useState(true)
@@ -21,7 +22,8 @@ const ConferenceJam = ({user}) => {
     const [micOption, setmicOption] = useState("")
     const [isMute, setisMute] = useState(false)
     const [listeners, setlisteners] = useState([])
-
+    const [visible, setvisible] = useState(false)
+    const [reaction, setreaction] = useState("")
 
     const navigate = useNavigate();
 
@@ -78,6 +80,12 @@ const ConferenceJam = ({user}) => {
         console.log(listeners)
     }, [listeners])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setvisible(false)
+        }, 3000)
+    }, [reaction])
+
 
     function joinperformer(conferenceAlias, pwd) {
         
@@ -106,6 +114,8 @@ const ConferenceJam = ({user}) => {
                         .onSnapshot((doc) => {
                             // console.log("Current data: ", doc.data());
                             setlisteners(doc.data()['participant'])
+                            setreaction(doc.data()['reaction'])
+                            setvisible(true)
                         });
                     })
                     .then(() => {
@@ -183,6 +193,8 @@ const ConferenceJam = ({user}) => {
                 .onSnapshot((doc) => {
                     // console.log("Current data: ", doc.data());
                     setlisteners(doc.data()['participant'])
+                    setreaction(doc.data()['reaction'])
+                    setvisible(true)
                 });
         })
         .catch((err) => console.error(err));
@@ -254,7 +266,11 @@ const ConferenceJam = ({user}) => {
 
     return (
         <div>
-            <h1 id="name-message">Logging in...</h1>
+            <div className="flex justify-between">
+
+                <h1 id="name-message">Logging in...</h1>
+                
+            </div>
             <div id="video-container" className="hidden"></div>
                     <div id="screenshare-container">
                         
@@ -263,8 +279,9 @@ const ConferenceJam = ({user}) => {
                 isJoin? <NewJam user={user} joinroom={joinroom} joinperformer={joinperformer} /> : ""
             }
             {
+                
                 inMeeting? <>
-                <div className="flex justify-between">
+                <div className="flex justify-between ">
 
                     <div class="form">
                         <label for="input-audio-devices">Input Audio Devices:</label>
@@ -283,7 +300,18 @@ const ConferenceJam = ({user}) => {
                         <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => muteparticipant()}>Mute</p>
                         <p  class="inline-block text-sm px-4 py-2 m-4 leading-none border rounded text-yellow-400 border-yellow-400 hover:border-transparent  hover:bg-yellow-400 hover:text-black mt-4 lg:mt-0" onClick={() => unmuteparticipant()}>Unmute</p>
                         {/* <p>mute: {isMute? "<MicOffIcon />": "<MicIcon />"}</p> */}
-                        <p>mute: {isMute? <MicOffIcon />: <MicIcon />}</p>
+                        <div className="flex justify-around">
+                        <p>Mute/Unmute:{isMute? <MicOffIcon />: <MicIcon />}</p>
+                        <FadeIn>
+                        {
+                            visible ? <div className=" w-full flex justify-end">
+                            <p className="bg-gray-700  px-2 py-1">{reaction}</p>
+                        </div>: ""
+                        }
+                        
+                    </FadeIn>
+                        
+                        </div>
                     </div>
                 </div>
                     {}
@@ -294,6 +322,14 @@ const ConferenceJam = ({user}) => {
 
             {
                 inMeetingAsParticipant? <>
+                    <FadeIn>
+                        {
+                            visible ? <div className=" w-full flex justify-end">
+                            <p className="bg-gray-700  px-2 py-1">{reaction}</p>
+                        </div>: ""
+                        }
+                        
+                    </FadeIn>
                     <ParticipantMeeting user={user} listeners={listeners} participantList = {participantList} leaveroom={leaveparticipantroom} cfname={cfname} started={started}/>
                 </> : ""
             }

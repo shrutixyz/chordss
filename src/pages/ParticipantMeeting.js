@@ -23,7 +23,12 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
     },3000);
   }
 
- 
+  
+  function addReaction(emoji){
+    db.collection('jams').doc(cfname).update({
+      'reaction' : `${user.email} reacted with ${emoji}`
+    })
+  }
 
  
 
@@ -31,14 +36,24 @@ function ParticipantMeeting ({user, participantList, cfname ,leaveroom, started,
   return(
     
     <div className="m-6">
+
       <div className="flex justify-between ">
         <h1>{cfname}</h1>
         <div className="flex" >
           
-        <img src={endCall} alt="" className="h-10" onClick={() => leaveroom()}/>
+        <img src={endCall} alt="" className="h-10 cursor-pointer" onClick={() => leaveroom()}/>
           <h1 className="px-3" id="copytext"></h1>
-        <BiShareAlt onClick={() =>  copy()} className="h-8 w-8"/>
+        <BiShareAlt onClick={() =>  copy()} className="h-8 w-8 cursor-pointer"/>
         </div>
+      </div>
+        <p className="opacity-60">Tap on emojis to react</p>
+      <div className="flex justify-between w-1/3">
+
+        <p className="bg-gray-700 px-2 py-1 cursor-pointer" onClick={e => addReaction(e.target.innerText)}>😍</p>
+        <p className="bg-gray-700 px-2 py-1 cursor-pointer" onClick={e => addReaction(e.target.innerText)}>🥺</p>
+        <p className="bg-gray-700 px-2 py-1 cursor-pointer" onClick={e => addReaction(e.target.innerText)}>🔥</p>
+        <p className="bg-gray-700 px-2 py-1 cursor-pointer" onClick={e => addReaction(e.target.innerText)}>✨</p>
+        <p className="bg-gray-700 px-2 py-1 cursor-pointer" onClick={e => addReaction(e.target.innerText)}>💖</p>
       </div>
       <br />
       {console.log(participantList)}
